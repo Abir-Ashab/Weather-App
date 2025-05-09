@@ -7,7 +7,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 let apiKey:string = "1a19e7763c77142fd6b2b5cab6b6ec98"
 
 map.on("click", function (e) {
-  const { lat, lng } = e.latlng;
+  const lat: Number = e.latlng.lat;
+  const lng: Number = e.latlng.lng
   console.log("Clicked at:", lat, lng);
 
   fetch(

@@ -5,7 +5,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 let apiKey = "1a19e7763c77142fd6b2b5cab6b6ec98";
 map.on("click", function (e) {
-    const { lat, lng } = e.latlng;
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
     console.log("Clicked at:", lat, lng);
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`)
         .then((response) => response.json())
