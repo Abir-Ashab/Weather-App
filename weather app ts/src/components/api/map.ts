@@ -4,11 +4,16 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
 }).addTo(map);
 
-let apiKey:string = "1a19e7763c77142fd6b2b5cab6b6ec98"
+let apiKey:string;
+// async function for fetching
+async function fetching() {
+  const config = await fetch('../../../config/config.json').then(response => response.json());
+  apiKey = config.apiKey;
+}
+fetching();
 
 map.on("click", function (e) {
-  const lat: Number = e.latlng.lat;
-  const lng: Number = e.latlng.lng
+  const { lat, lng } = e.latlng;
   console.log("Clicked at:", lat, lng);
 
   fetch(
